@@ -3,9 +3,9 @@ const app = express();
 const route = require("./userlogin/authentication");
 const dotenv = require("dotenv");
 dotenv.config();
-const cors = require("cors");
 const details = require("./mongoDB/mongoDB");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 app.use(
   cors({
@@ -33,7 +33,7 @@ app.delete("/delete/:id", async (req, res) => {
   res.json({ data: data });
 });
 
-// server
+// server and connecting mongodb
 
 mongoose
   .connect("mongodb://127.0.0.1/assignment2")
@@ -41,7 +41,7 @@ mongoose
     console.log("db connected");
     app.listen(5050, async () => {
       try {
-        console.log("server started............");
+        console.log("server started.......");
       } catch (err) {
         console.log(`${err} in server connection`);
       }
